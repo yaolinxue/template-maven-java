@@ -74,6 +74,11 @@
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.8.1</version>
 				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-checkstyle-plugin</artifactId>
+					<version>3.1.0</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 
@@ -147,6 +152,25 @@
 							<charset>${project.build.sourceEncoding}</charset>
 							<encoding>${project.build.sourceEncoding}</encoding>
 							<docencoding>${project.build.sourceEncoding}</docencoding>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>validate</id>
+						<goals>
+							<goal>check</goal>
+						</goals>
+						<phase>validate</phase>
+						<configuration>
+							<consoleOutput>true</consoleOutput>
+							<failsOnError>true</failsOnError>
+							<failOnViolation>true</failOnViolation>
+							<configLocation>google_checks.xml</configLocation>
 						</configuration>
 					</execution>
 				</executions>
